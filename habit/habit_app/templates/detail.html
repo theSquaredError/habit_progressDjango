@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+    #progress_form {
+    display: none;
+    }
+
+    </style>
+    <title>{{ habit.title }}</title>
+</head>
+
+<body>
+
+<div class="temp-cont container-fluid text-white bg-secondary jumbotron text-center">
+    <h1 class="font-weight-bold">{{ habit.title }}</h1>
+    <p>You are doing great, but there is always a chance of improvement.</p>
+    <div class="container-fluid">
+        <a onclick="addChild();" id="progress_btn" class="float-right btn btn-primary btn-lg">Add Progress</a>
+    </div>
+</div>
+
+
+    <div class="w-50 p-3 flex-wrap container float-left">
+        <div class="float-left w-100 p-3 ">
+            {% for progress in progress_list %}
+            <div class="card mb-4" style="background-color: #6c757d;">
+                <div class="card-body">
+                    <h2 class="card-title">{{ progress.rating }} {{ progress.edit_date }}</h2>
+                    <p class="card-text">{{progress.feeling|slice:":200" }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="container w-50 p-3 flex-wrap float-right">
+        <form method="POST" id="progress_form">
+            <div class="form-group float-right font-weight-bold text-lg">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+
+<script type="text/javascript">
+    function addChild() {
+  document.getElementById('progress_form').style.display = 'block';
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Create Habit</title>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <a href="{% url 'habit_app' %}" class="h2">The habit tracker</a>
+  </div>
+
+  <div class="container">
+
+    <h1 class="text-center">{{ habit.title }}</h1>
+    <!--        <h2>"Tracking your habit increases the chance of being successful and persistent."</h2>-->
+    <blockquote class="blockquote text-center">
+      <p class="mb-0">You are doing great, but there is always a chance of improvement.</p>
+    </blockquote>
+  </div>
+
+  <form method="POST">
+    <div class="form-group container w-50 p-3 font-weight-bold text-lg d-flex flex-wrap float-left">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit"  class="btn btn-primary">
+      </div>
+  </form>
+</body>
+</html>
