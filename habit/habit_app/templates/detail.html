@@ -31,7 +31,7 @@
             {% for progress in progress_list %}
             <div class="card mb-4" style="background-color: #6c757d;">
                 <div class="card-body">
-                    <h2 class="card-title">{{ progress.rating }} {{ progress.edit_date }}</h2>
+                    <h2 class="card-title">{{ progress.edit_date }} Score: {{ progress.rating }} </h2>
                     <p class="card-text">{{progress.feeling|slice:":200" }}</p>
                 </div>
             </div>
